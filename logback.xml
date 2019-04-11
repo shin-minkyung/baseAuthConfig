@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>/Users/ksb/log/hecateAuth/hecate.log</file>
+<!--     	<file>/home/sysadm/log/hecateAuth/hecate.log</file> -->
+    	<encoder>
+            <pattern>[%X{hecateTxId}] %d{HH:mm:ss} [%thread]%-5level [%class{50}.class] - %msg%n</pattern>
+        </encoder>
+    	
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/Users/ksb/log/hecateAuth/%d{yyyy-MM-dd}_hecate.log</fileNamePattern>
+<!--             <fileNamePattern>/home/sysadm/log/hecateAuth/%d{yyyy-MM-dd}_hecate.log</fileNamePattern> -->
+            <maxHistory>30</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%X{hecateTxId}] %d{HH:mm:ss} [%thread]%-5level [%class{50}.class] - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+        <!-- 파일로 설정시 -->
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
+        

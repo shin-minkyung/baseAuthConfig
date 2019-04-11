@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.uracle.hecate.auth.issue.mapper.IssueMapper">
+    
+    <!-- 인증서 발급 이력 저장 -->
+    <insert id="insertCertIssueHistory" parameterType="map">
+    <![CDATA[
+    	INSERT INTO AUTH_CERT_ISSUE_HISTORY
+		VALUES(
+		AUTH_CERT_ISSUE_HISTORY_SEQ.NEXTVAL
+		,#{userId}
+		,#{deviceId}
+		,#{bcId}
+		,#{certInfo}
+		,#{hash}
+		,sysdate
+		,#{regId})
+	]]>
+    </insert>
+    
+    <!-- 인증서 폐기 이력 저장 -->
+    <insert id="insertCertDssueHistory" parameterType="map">
+    <![CDATA[
+    	INSERT INTO AUTH_CERT_DSSUE_HISTORY
+		VALUES(
+		AUTH_CERT_DSSUE_HISTORY_SEQ.NEXTVAL
+		,#{userId}
+		,#{deviceId}
+		,#{bcId}
+		,#{signDoc}
+		,#{dssueType}
+		,sysdate
+		,#{regId}
+		,#{hash}
+		)
+	]]>
+    </insert>
+    
+    
+</mapper>
