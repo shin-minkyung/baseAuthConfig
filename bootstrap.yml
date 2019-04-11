@@ -1,6 +1,0 @@
-#Config Server Connection
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8999      
-    
