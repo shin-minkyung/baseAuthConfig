@@ -18,7 +18,7 @@ my:
   greeting: hi
   hello: hello
   
-a : AAAA!!!ddddddddd
+a : AAAA
 b : BBBBBB
 c : CCCC
 d : DDD
